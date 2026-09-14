@@ -57,8 +57,8 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/logo/logo_integraTIF.png"
-#  adaptive_icon_foreground: "assets/logo/foreground_integraTIF.png"
-#  adaptive_icon_background: "assets/logo/background_integraTIF.png"
+  adaptive_icon_foreground: "assets/logo/logo_integraTIF.png"
+  adaptive_icon_background: "#ffffff"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
