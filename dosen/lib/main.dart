@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'screens/login_screen.dart';
+import 'screens/splash_screen.dart';
 import 'screens/dashboard_screen.dart';
 import 'services/auth_service.dart';
 
@@ -23,7 +24,8 @@ void main() async {
   final authService = AuthService();
   await authService.loadTokenFromStorage();
 
-  final Widget initialScreen = authService.isAuthenticated ? const DashboardScreen() : const LoginScreen();
+  final Widget targetScreen = authService.isAuthenticated ? const DashboardScreen() : const LoginScreen();
+  final Widget initialScreen = SplashScreen(nextScreen: targetScreen);
 
   debugPrint(dotenv.env['BASE_URL'] ?? 'null');
 
