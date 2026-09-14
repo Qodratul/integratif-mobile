@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'screens/login_screen.dart';
+import 'screens/splash_screen.dart';
 import 'screens/dashboard_screen.dart';
 import 'services/auth_service.dart';
 
@@ -15,15 +15,20 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  await dotenv.load(fileName: ".env");
+  try {
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    debugPrint('Could not load .env file: $e');
+  }
 
   final authService = AuthService();
   await authService.loadTokenFromStorage();
 
-  final Widget initialScreen = authService.isAuthenticated ? const DashboardScreen() : const LoginScreen();
+  final Widget targetScreen = authService.isAuthenticated ? const DashboardScreen() : const LoginScreen();
+  final Widget initialScreen = SplashScreen(nextScreen: targetScreen);
 
   debugPrint(dotenv.env['BASE_URL'] ?? 'null');
-  debugPrint(dotenv.env['EMPOWER_BASE_URL'] ?? 'null');
+
 
   runApp(
     MultiProvider(
@@ -38,7 +43,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   final Widget initialScreen;
 
-  const MyApp({Key? key, required this.initialScreen}) : super(key: key);
+  const MyApp({super.key, required this.initialScreen});
 
   @override
   Widget build(BuildContext context) {

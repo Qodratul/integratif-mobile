@@ -39,7 +39,7 @@ dependencies:
   provider: ^6.1.5
   path_provider: ^2.1.5
   open_filex: ^4.7.0
-  flutter_dotenv: ^5.2.1
+  flutter_dotenv: ^6.0.1
   flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
@@ -51,14 +51,14 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/logo/logo_integraTIF.png"
-#  adaptive_icon_foreground: "assets/logo/foreground_integraTIF.png"
-#  adaptive_icon_background: "assets/logo/background_integraTIF.png"
+  adaptive_icon_foreground: "assets/logo/logo_integraTIF.png"
+  adaptive_icon_background: "#ffffff"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -72,7 +72,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - .env
+      - assets/.env
       - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
